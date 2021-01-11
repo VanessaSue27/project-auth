@@ -1,15 +1,18 @@
-CORE ROUTES
+## Project Auth API 👩‍💻 BACKEND
 
-Base URL: https://project-auth-vane-axel.herokuapp.com/
+## DOCUMENTATION:
 
-POST /users
-Registration endpoint: create a new user, sign up
-This endpoint expects a name and password in the body from the POST request from the Frontend
+### Base URL: https://project-auth-vane-axel.herokuapp.com/
 
-POST /sessions
+#### POST /users
+Registration endpoint: create a new user (sign up)
+This endpoint expects a name and password in the client's POST request body in order to create a new User in the database.
+
+#### POST /sessions
 Login endpoint: login for already existing users
-This endpoint expects a username and password from frontend POST request
+This endpoint expects a username and password in the client's POST request in order to authenticate an already existing User.
 
-GET /users/:id/secret
-Restricted endpoint: only available after a user has successfully logged in to their account
-In order for it to be validated, this endpoint expects the user's valid access token included in the GET request's Authorization header
+#### GET /users/:id/secret
+Restricted endpoint: only available after a user has successfully signed up or logged in to their account
+The user's ID must be included in the GET request URL.
+In order for it to be validated, this endpoint expects the user's valid access token included in the GET request's Authorization header.
