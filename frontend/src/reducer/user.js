@@ -54,7 +54,7 @@ export const getSecretMessage = (userId, accessToken) => {
 
 export const login = (name, password) => {
   return (dispatch) => {
-    fetch('https://project-auth-vane-axel.herokuapp.com//sessions', {
+    fetch('https://project-auth-vane-axel.herokuapp.com/sessions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, password })

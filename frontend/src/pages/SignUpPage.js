@@ -15,7 +15,7 @@ import { user } from '../reducers/user';
 // and access token, which we now save in the global store by dispayching those
 // corresponding actions. Otherwise an error message is returned
 
-const SIGNUP_URL = 'https://project-auth-vane-axel.herokuapp.com//users';
+const SIGNUP_URL = 'https://project-auth-vane-axel.herokuapp.com/users';
 
 export const SignUpPage = ({ setPage }) => {
   const dispatch = useDispatch();
