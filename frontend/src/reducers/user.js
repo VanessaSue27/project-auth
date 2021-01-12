@@ -33,7 +33,7 @@ export const user = createSlice({
 // THUNKS
 export const getSecretMessage = (userId, accessToken) => {
   return (dispatch) => {
-    fetch(`https://project-auth-vane-axel.herokuapp.com//users/${userId}/secret`, {
+    fetch(`https://project-auth-vane-axel.herokuapp.com/users/${userId}/secret`, {
       method: 'GET',
       headers: { Authorization: accessToken }
     })
