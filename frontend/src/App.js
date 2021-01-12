@@ -14,7 +14,9 @@ const store = configureStore({ reducer });
 export const App = () => {
   return (
     <Provider store={store}>
+      <main>
       <LandingPage />
+      </main>
     </Provider>
   );
 };

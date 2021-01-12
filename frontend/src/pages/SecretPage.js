@@ -35,7 +35,7 @@ export const SecretPage = ({ setPage }) => {
     <>
       <h1>Uhhhh Secret Page...</h1>
       <h2>{`${secretMessage}`}</h2>
-      <button type="button" onClick={handleClick}>LOG OUT</button>
+      <button className="button-primary" type="button" onClick={handleClick}>Log out</button>
     </>
   );
 };

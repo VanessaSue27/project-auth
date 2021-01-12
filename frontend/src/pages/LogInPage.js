@@ -11,7 +11,7 @@ import { user, login } from '../reducers/user';
 // if successful, it will save the user's ID and access token in the global
 // store, giving the user access to the secret page
 
-export const LogInPage = () => {
+export const LogInPage = ({ setPage }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -30,11 +30,10 @@ export const LogInPage = () => {
 
   return (
     <>
-      <h1>Log In Page yeahhh!</h1>
-      <h3>Enter your details:</h3>
+      <h1>Log in</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+        <p className="p-label">Username:</p>
           <input
             type="text"
             value={name}
@@ -45,7 +44,7 @@ export const LogInPage = () => {
           />
         </label>
         <label>
-          Password:
+        <p className="p-label">Password:</p>
           <input
             type="password"
             value={password}
@@ -54,9 +53,12 @@ export const LogInPage = () => {
             required
           />
         </label>
-        <button type="submit">LOG IN</button>
+        <button className="button-primary" type="submit">Log in</button>
       </form>
-      {error && <h4>{`${error}`}</h4>}
+      {error && <div className="div-error">{`${error}`}</div>}
+      <hr/>
+      <p className="p-label">Don't have a user?</p>
+      <button className="button-secondary" type="button" onClick={() => setPage('signup')}>Sign up</button>
     </>
   );
 };
