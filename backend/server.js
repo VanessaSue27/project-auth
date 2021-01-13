@@ -103,7 +103,7 @@ app.get('/users/:id/secret', authenticateUser);
 app.get('/users/:id/secret', (req, res) => {
   // At this point the user has been added to the request object, so we have access to
   // that specific user's data
-  const secretMessage = `This is a super secret message for ${req.user.name}`;
+  const secretMessage = `${req.user.name}, did you know that`;
   res.status(201).json({ secretMessage });
 });
 

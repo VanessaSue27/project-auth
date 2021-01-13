@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { user, getSecretMessage, logout } from '../reducers/user';
+import secretImage from '../assets/secret.jpg';
 
 // Restricted page, only accessible after succesfully signing or logging in.
 // So only accesible when a valid access token has been saved to the global store
@@ -34,7 +35,10 @@ export const SecretPage = ({ setPage }) => {
   return (
     <>
       <h1>Uhhhh Secret Page...</h1>
-      <h2>{`${secretMessage}`}</h2>
+      <p>{`${secretMessage} the little open jar icon is the PAO (Period After Opening) symbol that informs consumers of the determined period of time a product may be used after opening without any harm to the consumer.`}</p>
+
+      <p>This symbol, featuring a number followed by the letter "M" (months), can be seen on almost all cosmetic products. This number inside the jar graphic tells you how long the product will stay good after the package is unsealed.</p>
+      <img src={secretImage} alt="Secret image"></img>
       <button className="button-primary" type="button" onClick={handleClick}>Log out</button>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { user } from '../reducers/user';
@@ -21,7 +21,13 @@ export const SignUpPage = ({ setPage }) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const error = useSelector((store) => store.user.errorMessage); 
+  const error = useSelector((store) => store.user.errorMessage);
+
+  // Added this function, so that if there was any error messages set up in the
+  // sign up page, they are cleared and don't show in the login page
+  useEffect(() => {
+    dispatch(user.actions.setErrorMessage({ errorMessage: null }));
+  }, [dispatch]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,25 +62,25 @@ export const SignUpPage = ({ setPage }) => {
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
-            minLength= "3"
-            maxLength= "20"
+            minLength="3"
+            maxLength="20"
             required
           />
         </label>
         <label>
-        <p className="p-label">Password:</p>
+          <p className="p-label">Password:</p>
           <input
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            minLength= "5"
+            minLength="5"
             required
           />
         </label>
         <button className="button-primary" type="submit">Create account</button>
       </form>
       {error && <div className="div-error">{`${error}`}</div>}
-      <hr/>
+      <hr />
       <p className="p-label">Already a user?</p>
       <button className="button-secondary" type="button" onClick={() => setPage('login')}>Log in</button>
     </div>
