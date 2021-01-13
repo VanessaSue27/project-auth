@@ -1,6 +1,6 @@
 # Project Auth 🔐
 
-This project's goal is to build an **API with authentication** in order to implement a registration flow + a Frontend with forms to register, sign in and view some restricted content once logged in 🔓
+This project's goal is to build an **API with authentication** in order to implement a registration flow, learn how to authenticate users using tokens and securely store password in databases + Create a Frontend with forms to register, sign in and view some restricted content once logged in 🔓
 
 This is a pair-programming project developed by: Axel Hammarbäck and Vanessa Sue Smith.
 
