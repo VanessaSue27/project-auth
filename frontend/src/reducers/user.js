@@ -4,7 +4,7 @@ const initialState = {
   userId: 0,
   accessToken: null,
   secretMessage: null,
-  errorMessage: null,
+  errorMessage: null
 };
 
 export const user = createSlice({

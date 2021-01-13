@@ -34,8 +34,10 @@ export const SecretPage = ({ setPage }) => {
 
   return (
     <>
-      <h1>Uhhhh Secret Page...</h1>
-      <p>{`${secretMessage} the little open jar icon is the PAO (Period After Opening) symbol that informs consumers of the determined period of time a product may be used after opening without any harm to the consumer.`}</p>
+      <h1>Shhhh! Secret Page...</h1>
+      <h3>{`${secretMessage}`}</h3>
+
+      <p>The little open jar icon is the PAO (Period After Opening) symbol that informs consumers of the determined period of time a product may be used after opening without any harm to the consumer.</p>
 
       <p>This symbol, featuring a number followed by the letter "M" (months), can be seen on almost all cosmetic products. This number inside the jar graphic tells you how long the product will stay good after the package is unsealed.</p>
       <img src={secretImage} alt="Secret about the cosmetics packaging"></img>

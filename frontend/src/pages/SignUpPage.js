@@ -23,8 +23,8 @@ export const SignUpPage = ({ setPage }) => {
   const [password, setPassword] = useState('');
   const error = useSelector((store) => store.user.errorMessage);
 
-  // Added this function, so that if there was any error messages set up in the
-  // sign up page, they are cleared and don't show in the login page
+  // Added this function, so that if there are any persisted error messages
+  // from login page, they will not show up here on load
   useEffect(() => {
     dispatch(user.actions.setErrorMessage({ errorMessage: null }));
   }, [dispatch]);
