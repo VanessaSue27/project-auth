@@ -10,7 +10,7 @@ const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost/authAPI';
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
-const User = mongoose.model('User', {
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     minLength: 3,
@@ -21,13 +21,30 @@ const User = mongoose.model('User', {
   password: {
     type: String,
     minLength: 5,
+    maxLength: 50,
     required: true
   },
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex'),
-  },
+    unique: true,
+  }
 });
+
+userSchema.pre('save', async function (next) {
+  const user = this;
+  // isModified: "Returns true if any of the given paths is modified, else false. If no arguments, returns true if any path in this document is modified."
+  // https://mongoosejs.com/docs/api.html#document_Document-isModified
+  if (!user.isModified('password')) {
+    return next();
+  }
+  const salt = bcrypt.genSaltSync(10);
+  // Hash the password – this happens after the validation.
+  user.password = bcrypt.hashSync(user.password, salt);
+  next();
+});
+
+const User = mongoose.model('User', userSchema);
 
 // Set up in which PORT to run server
 const port = process.env.PORT || 8080;
@@ -63,19 +80,17 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app));
 });
 
-// REGISTRATION ENDPOINT - to create a NEW account - Sign Up
+// SIGN UP ENDPOINT - to create a NEW account - Sign Up
 // This endpoint expects a name and password in the body from the POST request from the Frontend
 app.post('/users', async (req, res) => {
   try {
     const { name, password } = req.body;
-    const salt = bcrypt.genSaltSync(10);
-    
-    // this will create a new user in the database, store the name and will encrypt the password before storing it
-    const user = new User({ name, password: bcrypt.hashSync(password, salt) });
-    const savedUser = await user.save();
+
+    // this will create a new user in the database, store the name and the encrypted password.
+    const user = await new User({ name, password }).save();
 
     // if the user was saved successfully, the response will include the newly saved user's ID and their access token
-    res.status(201).json({ userId: savedUser._id, accessToken: savedUser.accessToken });
+    res.status(201).json({ userId: user._id, accessToken: user.accessToken });
   } catch (error) {
     res.status(400).json({ message: 'Could not create user', error });
   }
@@ -103,10 +118,10 @@ app.post('/sessions', async (req, res) => {
       // if the user is found and the password matches, we respond with the user ID and their access token
       res.status(201).json({ userId: user._id, accessToken: user.accessToken });
     } else {
-      res.status(404).json({ notFound: true, message: "Verify username and password is correct" });
+      res.status(404).json({ notFound: true, message: 'Verify username and password is correct' });
     }
   } catch (err) {
-    res.status(404).json({ notFound: true, message: "Verify username and password is correct" });
+    res.status(404).json({ notFound: true, message: 'Verify username and password is correct' });
   }
 });
 
