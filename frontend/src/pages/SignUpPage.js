@@ -47,12 +47,11 @@ export const SignUpPage = ({ setPage }) => {
   };
 
   return (
-    <>
-      <h1>Sign Up Page yeahhh!</h1>
-      <h3>Create an Account</h3>
+    <div className="column">
+      <h1>Sign up</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          <p className="p-label">Username:</p>
           <input
             type="text"
             value={name}
@@ -63,7 +62,7 @@ export const SignUpPage = ({ setPage }) => {
           />
         </label>
         <label>
-          Password:
+        <p className="p-label">Password:</p>
           <input
             type="password"
             value={password}
@@ -72,11 +71,12 @@ export const SignUpPage = ({ setPage }) => {
             required
           />
         </label>
-        <button type="submit">Create Account</button>
+        <button className="button-primary" type="submit">Create account</button>
       </form>
-      {error && <h4>{`${error}`}</h4>}
-      <h4>Already a user?</h4>
-      <button type="button" onClick={() => setPage('login')}>Log In</button>
-    </>
+      {error && <div className="div-error">{`${error}`}</div>}
+      <hr/>
+      <p className="p-label">Already a user?</p>
+      <button className="button-secondary" type="button" onClick={() => setPage('login')}>Log in</button>
+    </div>
   );
 };

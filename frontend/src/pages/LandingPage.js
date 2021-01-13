@@ -20,7 +20,7 @@ export const LandingPage = () => {
   if (!accessToken) {
     return (
       <>
-        {page === 'signup' ? (<SignUpPage setPage={setPage} />) : (<LogInPage />)}
+        {page === 'signup' ? (<SignUpPage setPage={setPage} />) : (<LogInPage setPage={setPage}  />)}
       </>
     );
   } else {

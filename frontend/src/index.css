@@ -1,13 +1,160 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Primary Purple: #6002EE */
+/* Helpful link for choosing colors: https://material.io/design/color/the-color-system.html#tools-for-picking-colors */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap");
+
+/* Applied to everything, since things scale unintuitively otherwise */
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fcfcfc;
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 150%;
+  /* Base font size set to 1.125 rem = 16*1.125 = 18px */
+  font-size: 1.125rem;
+}
+
+h1,
+h2 {
+  letter-spacing: -1px;
+}
+
+h1 {
+  font-size: 64px;
+  font-weight: 300;
+  color: #6002ee;
+}
+
+h4 {
+  margin: 16px 0;
+}
+
+p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.div-error {
+  background: rgba(226, 117, 117, 0.15);
+  border: 1px solid #e27575;
+  border-radius: 32px;
+  padding: 5px 16px;
+  color: #ce1e1e;
+}
+
+/* ====== INPUT STYLES ====== */
+button,
+input {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+/* === BUTTON STYLES === */
+button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 32px;
+  font-weight: 600;
+  margin: 8px 0;
+  /* Bad idea to put outline: 0, UNLESS you add styling to make up for the :active and :focus pseudo classes (which we do below) */
+  outline: 0;
+}
+
+/* = PRIMARY BUTTON = */
+.button-primary {
+  background-color: #6002ee;
+  color: #fff;
+}
+.button-primary:hover {
+  background-color: #7e3ff2;
+}
+.button-primary:active {
+  background-color: #5300e8;
+}
+.button-primary:focus {
+  box-shadow: inset 0 0 0 3px #6002ee, inset 0 0 0 5px #fff;
+}
+
+/* = SECONDARY BUTTON = */
+.button-secondary {
+  border: 3px solid #6002ee;
+  background-color: #fff;
+  color: #6002ee;
+}
+.button-secondary:hover {
+  background-color: #efe5fd;
+}
+.button-secondary:active {
+  background-color: #d4bff9;
+}
+.button-secondary:focus {
+  border: 3px solid #6002ee;
+  box-shadow: inset 0 0 0 2px #6002ee;
+}
+
+/* So much code for a straight line :D  */
+hr {
+  width: 100%;
+  height: 1px;
+  margin: 24px 0;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.column,
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  padding: 16px 0;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0 8px 0;
+}
+
+form button {
+  margin-top: 32px;
+}
+
+.p-label {
+  margin-bottom: 4px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+/* === TEXT INPUT STYLES === */
+
+input {
+  padding: 12px 16px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 32px;
+  outline: 0;
+}
+
+input:active {
+  box-shadow: 0 0 0 2px #6002ee;
+}
+
+input:focus {
+  box-shadow: 0 0 0 1px #6002ee;
+  border: 2px solid #6002ee;
 }
