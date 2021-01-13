@@ -27,13 +27,14 @@ const userSchema = new mongoose.Schema({
   accessToken: {
     type: String,
     default: () => crypto.randomBytes(128).toString('hex'),
-    unique: true,
+    unique: true
   }
 });
 
 userSchema.pre('save', async function (next) {
   const user = this;
-  // isModified: "Returns true if any of the given paths is modified, else false. If no arguments, returns true if any path in this document is modified."
+  // isModified: "Returns true if any of the given paths is modified, else false. 
+  // If no arguments, returns true if any path in this document is modified."
   // https://mongoosejs.com/docs/api.html#document_Document-isModified
   if (!user.isModified('password')) {
     return next();
@@ -80,7 +81,7 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app));
 });
 
-// SIGN UP ENDPOINT - to create a NEW account - Sign Up
+// SIGN UP ENDPOINT - to create a NEW account
 // This endpoint expects a name and password in the body from the POST request from the Frontend
 app.post('/users', async (req, res) => {
   try {
@@ -103,7 +104,7 @@ app.get('/users/:id/secret', authenticateUser);
 app.get('/users/:id/secret', (req, res) => {
   // At this point the user has been added to the request object, so we have access to
   // that specific user's data
-  const secretMessage = `${req.user.name}, did you know that`;
+  const secretMessage = `${req.user.name}, did you know that...`;
   res.status(201).json({ secretMessage });
 });
 
