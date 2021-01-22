@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   userId: 0,
-  accessToken: null,
+  accessToken: localStorage.validToken || null,
   secretMessage: null,
   errorMessage: null
 };
@@ -18,6 +18,7 @@ export const user = createSlice({
     setAccessToken: (state, action) => {
       const { accessToken } = action.payload;
       state.accessToken = accessToken;
+      localStorage.setItem('validToken', accessToken);
     },
     setErrorMessage: (state, action) => {
       const { errorMessage } = action.payload;
@@ -82,6 +83,7 @@ export const logout = () => {
     dispatch(user.actions.setAccessToken({ accessToken: null }));
     dispatch(user.actions.setErrorMessage({ errorMessage: null }));
     dispatch(user.actions.setSecretMessage({ secretMessage: null }));
+    localStorage.removeItem('validToken');
   };
 };
 

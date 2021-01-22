@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <main>
-      <LandingPage />
+        <LandingPage />
       </main>
     </Provider>
   );
