@@ -2,7 +2,7 @@
 
 ## DOCUMENTATION:
 
-### Base URL: https://project-auth-vane-axel.herokuapp.com/
+### Base URL: ~~https://project-auth-vane-axel.herokuapp.com/~~ Unfortunately since the removal of Heroku Free dynos we had to take this API down 💔 so it's not deployed at the moment.
 
 #### POST /users
 Registration endpoint: create a new user (sign up)
